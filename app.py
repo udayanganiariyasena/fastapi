@@ -1,7 +1,7 @@
 from fastapi import FastAPI # type: ignore
 from pydantic import BaseModel # type: ignore
 
-# FastAPI setup
+
 app = FastAPI()
 
 class Question(BaseModel):

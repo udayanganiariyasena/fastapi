@@ -1,6 +1,6 @@
 from fastapi import FastAPI # type: ignore
 from pydantic import BaseModel # type: ignore
-
+import request
 
 app = FastAPI()
 
@@ -10,10 +10,12 @@ class Question(BaseModel):
 
 @app.get("/")
 def read_root():
-    return {"message": "Hello, World!"}
+    return {"message": "AIHRMS for HORIZON CAMPUS"}
 
-@app.post("/ask")
+@app.post("/")
 async def ask_hr(question: Question):
-    answer = (question.question)
-    return {"question": question.question, "answer": answer}
+    answer = process_question(question.question)
+    return {"response": answer}
 
+def process_question(query):
+    return f"Processed response for: {query}"
